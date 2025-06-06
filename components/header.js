@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="dist/style.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/a3f7031104.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body class="font-roboto">
-    <!-- header start -->
-    <nav class="bg-primary-500">
+window.addEventListener("DOMContentLoaded", function () {
+  const header = ` <nav class="bg-primary-500">
       <div class="container max-w-7xl py-4 px-8 mx-auto">
         <div class="flex justify-between gap-8">
           <!-- Logo -->
@@ -115,8 +97,24 @@
         </ul>
       </div>
     </nav>
-    <!-- header end -->
+    <!-- header end --> `;
 
-    <script src="js/main.js"></script>
-  </body>
-</html>
+  const headerContainer = document.getElementById("header");
+  if (headerContainer) {
+    headerContainer.innerHTML = header;
+    const mobileButton = document.getElementById("mobile-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    const toggleMobileButton = () => {
+      mobileMenu.classList.toggle("hidden");
+      const icon = mobileButton.querySelector("i");
+      if (mobileMenu.classList.contains("hidden")) {
+        icon.className = "fa-solid fa-bars fa-2x text-white";
+      } else {
+        icon.className = "fa-solid fa-times fa-2x text-white";
+      }
+    };
+
+    mobileButton.addEventListener("click", toggleMobileButton);
+  }
+});
